@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WorkNoteView.Views
+namespace WorkNoteView
 {
     /// <summary>
     /// Lógica de interacción para AccesView.xaml

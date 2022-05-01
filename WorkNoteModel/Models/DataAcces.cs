@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WorkNoteModel.Models
 {
@@ -40,9 +41,9 @@ namespace WorkNoteModel.Models
                     acces.Name = dataReader.GetString(dataReader.GetOrdinal("name"));
                     acces.Ip = dataReader.GetString(dataReader.GetOrdinal("ip"));
                     acces.Adrees = dataReader.GetString(dataReader.GetOrdinal("adrees"));
-                    acces.Type = dataReader.GetString(dataReader.GetOrdinal("type"));
+                    acces.Type = dataReader.GetInt32(dataReader.GetOrdinal("type"));
                     acces.Note = dataReader.GetString(dataReader.GetOrdinal("note"));
-                    acces.Source = dataReader.GetString(dataReader.GetOrdinal("source"));
+                    acces.IdSource = dataReader.GetInt32(dataReader.GetOrdinal("idSource"));
                     acces.Date = dataReader.GetString(dataReader.GetOrdinal("date"));
        
                     AccesList.Add(acces);
@@ -90,24 +91,22 @@ namespace WorkNoteModel.Models
             string mensaje = "";
             try
             {
-
                 using (SqlCommand cmd = InitializeSP("Acces.SP_Insert_Acces"))
                 {
-
                     cmd.Connection.Open();
                     cmd.Parameters.AddWithValue("@name", acces.Name);
                     cmd.Parameters.AddWithValue("@ip", acces.Ip);
                     cmd.Parameters.AddWithValue("@adrees", acces.Adrees);
                     cmd.Parameters.AddWithValue("@idType", acces.Type);
                     cmd.Parameters.AddWithValue("@note", acces.Note);
-                    cmd.Parameters.AddWithValue("@source", acces.Source);
+                    cmd.Parameters.AddWithValue("@idSource", acces.IdSource);
                     cmd.ExecuteReader();
                     cmd.Connection.Close();
                 }
             }
             catch (Exception e)
             {
-                mensaje = e.Message.ToString();
+                MessageBox.Show(e.Message);
             }
             return mensaje;
         }

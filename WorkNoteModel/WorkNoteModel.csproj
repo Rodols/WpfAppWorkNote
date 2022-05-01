@@ -57,6 +57,7 @@
     <Compile Include="Models\Acces.cs" />
     <Compile Include="Models\AccesType.cs" />
     <Compile Include="Models\DataAcces.cs" />
+    <Compile Include="Models\Source.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

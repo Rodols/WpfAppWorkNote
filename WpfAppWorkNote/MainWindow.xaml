@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppWorkNote"
-        xmlns:views="clr-namespace:WorkNoteView.Views;assembly=WorkNoteView"
+        xmlns:views="clr-namespace:WorkNoteView;assembly=WorkNoteView"
         xmlns:vm="clr-namespace:WorkNoteViewModel;assembly=WorkNoteViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -14,7 +14,7 @@
     <Grid>
         <TabControl>
             <TabItem Header="Acces" DataContext="{StaticResource AccesViewModel}">
-                <views:AccesView/>
+                <views:AccesView />
             </TabItem>
         </TabControl>
     </Grid>
