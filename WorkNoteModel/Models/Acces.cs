@@ -12,7 +12,8 @@ namespace WorkNoteModel.Models
         public string Name { get; set; }
         public string Ip { get; set; }
         public string Adrees { get; set; }
-        public AccesType Type { get; set; }
+        public int IdType { get; set; }
+        public string AccesType { get; set; }
         public string Note { get; set; }
         public int IdSource { get; set; }
         public string Date { get; set; }

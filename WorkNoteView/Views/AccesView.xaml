@@ -27,13 +27,15 @@
             <Label Content="Type"></Label>
             <ComboBox ItemsSource="{Binding TypeList}" 
                 DisplayMemberPath="Name" 
-                SelectedValuePath="IdType"/>
+                SelectedValuePath="IdType"
+                SelectedValue="{Binding IdTypeAcces}"/>
             <Label Content="Note"></Label>
             <TextBox Text="{Binding Note}"></TextBox>
             <Label Content="Source"></Label>
             <ComboBox ItemsSource="{Binding SourceList}" 
                 DisplayMemberPath="Name" 
-                SelectedValuePath="IdSource"/>
+                SelectedValuePath="IdSource"
+                SelectedValue="{Binding IdSource}"/>
             <Button 
                 Margin="0,5,0,0"
                 Background="Green" 

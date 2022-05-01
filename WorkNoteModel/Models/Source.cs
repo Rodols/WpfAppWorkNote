@@ -10,6 +10,6 @@ namespace WorkNoteModel.Models
     {
         public int IdSource { get; set; }
         public string Name { get; set; }
-        public int Description { get; set; }
+        public string Description { get; set; }
     }
 }

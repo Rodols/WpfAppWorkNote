@@ -10,11 +10,15 @@
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <vm:AccesViewModel x:Key="AccesViewModel"/>
+        <vm:SourceViewModel x:Key="SourceViewModel"/>
     </Window.Resources>
     <Grid>
         <TabControl>
             <TabItem Header="Acces" DataContext="{StaticResource AccesViewModel}">
                 <views:AccesView />
+            </TabItem>
+            <TabItem Header="Source" DataContext="{StaticResource SourceViewModel}">
+                <views:SourceView/>
             </TabItem>
         </TabControl>
     </Grid>

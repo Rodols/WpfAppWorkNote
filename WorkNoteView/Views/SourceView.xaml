@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="WorkNoteView.SourceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WorkNoteView"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel>
+            <Label HorizontalAlignment="Center" FontSize="25" Margin="0,6,0,6" Content="Acces"></Label>
+            <Label Content="Name"></Label>
+            <TextBox Text="{Binding Name}"></TextBox>
+            <Label Content="Descripción"></Label>
+            <TextBox Text="{Binding Description}"></TextBox>
+            <Button 
+                Margin="0,5,0,0"
+                Background="Green" 
+                Foreground="White"
+                Command="{Binding BtnSaveSource}">
+                Guardar
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

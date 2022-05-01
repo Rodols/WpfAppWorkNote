@@ -41,7 +41,8 @@ namespace WorkNoteModel.Models
                     acces.Name = dataReader.GetString(dataReader.GetOrdinal("name"));
                     acces.Ip = dataReader.GetString(dataReader.GetOrdinal("ip"));
                     acces.Adrees = dataReader.GetString(dataReader.GetOrdinal("adrees"));
-                    acces.Type = dataReader.GetInt32(dataReader.GetOrdinal("type"));
+                    acces.AccesType = dataReader.GetString(dataReader.GetOrdinal("type"));
+                    acces.IdType = dataReader.GetInt32(dataReader.GetOrdinal("idType"));
                     acces.Note = dataReader.GetString(dataReader.GetOrdinal("note"));
                     acces.IdSource = dataReader.GetInt32(dataReader.GetOrdinal("idSource"));
                     acces.Date = dataReader.GetString(dataReader.GetOrdinal("date"));
@@ -58,7 +59,7 @@ namespace WorkNoteModel.Models
             }
         }
 
-        public List<AccesType> GetType()
+        public List<AccesType> GetAccesType()
         {
             List<AccesType> typeList = new List<AccesType>();
 
@@ -86,6 +87,34 @@ namespace WorkNoteModel.Models
             }
         }
 
+        public List<Source> GetSource()
+        {
+            List<Source> sourceList = new List<Source>();
+
+            using (SqlCommand cmd = InitializeSP("Acces.SP_GetSource"))
+            {
+                try
+                {
+                    cmd.Connection.Open();
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        Source source = new Source();
+                        source.IdSource = dataReader.GetInt32(dataReader.GetOrdinal("idSource"));
+                        source.Name = dataReader.GetString(dataReader.GetOrdinal("name"));
+
+                        sourceList.Add(source);
+                    }
+                    cmd.Connection.Close();
+                }
+                catch (Exception error)
+                {
+                    Console.WriteLine(error.Message);
+                }
+                return sourceList;
+            }
+        }
+
         public string AddAcces(Acces acces)
         {
             string mensaje = "";
@@ -97,7 +126,7 @@ namespace WorkNoteModel.Models
                     cmd.Parameters.AddWithValue("@name", acces.Name);
                     cmd.Parameters.AddWithValue("@ip", acces.Ip);
                     cmd.Parameters.AddWithValue("@adrees", acces.Adrees);
-                    cmd.Parameters.AddWithValue("@idType", acces.Type);
+                    cmd.Parameters.AddWithValue("@idType", acces.IdType);
                     cmd.Parameters.AddWithValue("@note", acces.Note);
                     cmd.Parameters.AddWithValue("@idSource", acces.IdSource);
                     cmd.ExecuteReader();
@@ -109,6 +138,56 @@ namespace WorkNoteModel.Models
                 MessageBox.Show(e.Message);
             }
             return mensaje;
+        }
+
+        public string AddSource(Source source)
+        {
+            string mensaje = "";
+            try
+            {
+                using (SqlCommand cmd = InitializeSP("Acces.SP_Insert_Acces"))
+                {
+                    cmd.Connection.Open();
+                    cmd.Parameters.AddWithValue("@idSource", source.Name);
+                    cmd.Parameters.AddWithValue("@name", source.Name);
+                    cmd.Parameters.AddWithValue("@description", source.Description);
+                    cmd.ExecuteReader();
+                    cmd.Connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return mensaje;
+        }
+
+        public List<Source> GetSources()
+        {
+            List<Source> sourceList = new List<Source>();
+
+            using (SqlCommand cmd = InitializeSP("Acces.SP_GetSource"))
+            {
+                try
+                {
+                    cmd.Connection.Open();
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        Source source = new Source();
+                        source.IdSource = dataReader.GetByte(dataReader.GetOrdinal("idSource"));
+                        source.Name = dataReader.GetString(dataReader.GetOrdinal("name"));
+                        source.Description = dataReader.GetString(dataReader.GetOrdinal("description"));
+                        sourceList.Add(source);
+                    }
+                    cmd.Connection.Close();
+                }
+                catch (Exception error)
+                {
+                    Console.WriteLine(error.Message);
+                }
+                return sourceList;
+            }
         }
     }
 }

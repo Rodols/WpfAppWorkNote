@@ -22,7 +22,7 @@ namespace WorkNoteViewModel
         private string _Name="";
         private string _Ip="";
         private string _Adrees="";
-        private int _TypeAcces=0;
+        private int _IdTypeAcces=0;
         private string _Note="";
         private int _IdSource=0;
 
@@ -44,10 +44,16 @@ namespace WorkNoteViewModel
             set { _Adrees = value; }
         }
 
-        public int TypeAcces
+        public int IdTypeAcces
         {
-            get { return _TypeAcces; }
-            set { _TypeAcces = value; }
+            get { return _IdTypeAcces; }
+            set { _IdTypeAcces = value; }
+        }
+
+        public int IdSource
+        {
+            get { return _IdSource; }
+            set { _IdSource = value; }
         }
 
         public string Note
@@ -99,7 +105,7 @@ namespace WorkNoteViewModel
             acces.Name = Name;
             acces.Ip = Ip;
             acces.Adrees = Adrees;
-            acces.Type = TypeAcces;
+            acces.IdType = IdTypeAcces;
             acces.Note = Note;
             acces.IdSource = IdSource;
 
@@ -111,7 +117,8 @@ namespace WorkNoteViewModel
         public AccesViewModel()
         {
             AccesList = data.GetAcces();
-            TypeList = data.GetType();
+            TypeList = data.GetAccesType();
+            SourceList = data.GetSource();
         }
 
 
