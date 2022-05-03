@@ -26,12 +26,13 @@ namespace WorkNoteModel.Models
 
         public List<Acces> GetAcces()
         {
-            List<Acces> AccesList = null;
+            List<Acces> AccesList = new List<Acces>();
 
             using (SqlCommand cmd = InitializeSP("Acces.SP_GetAcces"))
             {
                 try
                 {
+                    AccesList = new List<Acces>();
                 cmd.Connection.Open();
                 SqlDataReader dataReader = cmd.ExecuteReader();
                 while (dataReader.Read())
@@ -42,11 +43,12 @@ namespace WorkNoteModel.Models
                     acces.Ip = dataReader.GetString(dataReader.GetOrdinal("ip"));
                     acces.Adrees = dataReader.GetString(dataReader.GetOrdinal("adrees"));
                     acces.AccesType = dataReader.GetString(dataReader.GetOrdinal("type"));
-                    acces.IdType = dataReader.GetInt32(dataReader.GetOrdinal("idType"));
+                    acces.IdType = dataReader.GetByte(dataReader.GetOrdinal("idType"));
                     acces.Note = dataReader.GetString(dataReader.GetOrdinal("note"));
                     acces.IdSource = dataReader.GetInt32(dataReader.GetOrdinal("idSource"));
-                    acces.Date = dataReader.GetString(dataReader.GetOrdinal("date"));
-       
+                    acces.Source = dataReader.GetString(dataReader.GetOrdinal("source"));
+                    acces.Date = dataReader.GetDateTime(dataReader.GetOrdinal("date")); 
+
                     AccesList.Add(acces);
                 }
                 cmd.Connection.Close();

@@ -29,54 +29,82 @@ namespace WorkNoteViewModel
         public string Name
         {
             get { return _Name; }
-            set { _Name = value; }
+            set {
+                _Name = value;
+                RaisePropertyChanged("Name");
+            }
         }
 
         public string Ip
         {
             get { return _Ip; }
-            set { _Ip = value; }
+            set { 
+                _Ip = value;
+                RaisePropertyChanged("Ip");
+            }
         }
 
         public string Adrees
         {
             get { return _Adrees; }
-            set { _Adrees = value; }
+            set {
+                _Adrees = value;
+                RaisePropertyChanged("Adrees");
+            }
         }
 
         public int IdTypeAcces
         {
             get { return _IdTypeAcces; }
-            set { _IdTypeAcces = value; }
+            set {
+                _IdTypeAcces = value;
+                RaisePropertyChanged("IdTypeAcces");
+            }
         }
 
         public int IdSource
         {
             get { return _IdSource; }
-            set { _IdSource = value; }
+            set {
+                _IdSource = value;
+                RaisePropertyChanged("IdSource");
+            }
         }
 
         public string Note
         {
             get { return _Note; }
-            set { _Note = value; }
+            set {
+                _Note = value;
+                RaisePropertyChanged("Note");
+            }
+
         }
 
         public List<Source> SourceList
         {
             get { return _sourceList; }
-            set { _sourceList = value; }
+            set {
+                _sourceList = value;
+                RaisePropertyChanged("SourceList");
+            }
         }
         public List<AccesType> TypeList
         {
             get { return _typeList; }
-            set { _typeList = value; }
+            set { 
+                _typeList = value;
+                RaisePropertyChanged("TypeList");
+            }
         }
 
         public List<Acces> AccesList
         {
             get { return _accesList; }
-            set { _accesList = value; }
+            set { 
+                _accesList = value;
+                RaisePropertyChanged("AccesList");
+            }
         }
 
         #endregion

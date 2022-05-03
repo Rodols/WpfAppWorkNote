@@ -16,6 +16,7 @@ namespace WorkNoteModel.Models
         public string AccesType { get; set; }
         public string Note { get; set; }
         public int IdSource { get; set; }
-        public string Date { get; set; }
+        public string Source { get; set; }
+        public DateTime Date { get; set; }
     }
 }
