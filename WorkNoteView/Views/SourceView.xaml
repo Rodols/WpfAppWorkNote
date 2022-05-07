@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel>
-            <Label HorizontalAlignment="Center" FontSize="25" Margin="0,6,0,6" Content="Acces"></Label>
+            <Label HorizontalAlignment="Center" FontSize="25" Margin="0,6,0,6" Content="Source"></Label>
             <Label Content="Name"></Label>
             <TextBox Text="{Binding Name}"></TextBox>
             <Label Content="Descripción"></Label>
@@ -20,6 +20,7 @@
                 Command="{Binding BtnSaveSource}">
                 Guardar
             </Button>
+            <DataGrid AutoGenerateColumns="True" ItemsSource="{Binding SourceList}"></DataGrid>
         </StackPanel>
     </Grid>
 </UserControl>

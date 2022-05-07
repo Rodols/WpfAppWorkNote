@@ -147,10 +147,9 @@ namespace WorkNoteModel.Models
             string mensaje = "";
             try
             {
-                using (SqlCommand cmd = InitializeSP("Acces.SP_Insert_Acces"))
+                using (SqlCommand cmd = InitializeSP("Acces.SP_Insert_Source"))
                 {
                     cmd.Connection.Open();
-                    cmd.Parameters.AddWithValue("@idSource", source.Name);
                     cmd.Parameters.AddWithValue("@name", source.Name);
                     cmd.Parameters.AddWithValue("@description", source.Description);
                     cmd.ExecuteReader();
